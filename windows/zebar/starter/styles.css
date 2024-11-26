@@ -1,0 +1,132 @@
+/**
+ * Import the Nerdfonts icon font.
+ * Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+ */
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+/* Gruvbox Palette */
+:root {
+  --gruvbox-bg: #282828;
+  --gruvbox-bg-soft: #3c3836;
+  --gruvbox-bg-hover: #504945;
+  --gruvbox-fg: #ebdbb2;
+  --gruvbox-muted: #928374;
+  --gruvbox-highlight: #fabd2f;
+  --gruvbox-blue: #83a598;
+  --gruvbox-green: #b8bb26;
+  --gruvbox-red: #fb4934;
+}
+
+i {
+  color: var(--gruvbox-blue);
+  margin-right: 7px;
+}
+
+body {
+  color: var(--gruvbox-fg);
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  overflow: hidden;
+  background-color: var(--gruvbox-bg);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  border-bottom: 1px solid var(--gruvbox-muted);
+  background: var(--gruvbox-bg);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 100%;
+  padding: 4px 1.5vw;
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  justify-self: center;
+}
+
+.right {
+  justify-self: end;
+}
+
+.logo,
+.binding-mode,
+.tiling-direction,
+.network,
+.memory,
+.cpu,
+.battery {
+  margin-right: 20px;
+  color: var(--gruvbox-fg);
+}
+
+.workspaces {
+  display: flex;
+  align-items: center;
+}
+
+.workspace {
+  background: var(--gruvbox-bg-soft);
+  margin-right: 4px;
+  padding: 4px 8px;
+  color: var(--gruvbox-fg);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &.displayed {
+    background: var(--gruvbox-bg-hover);
+  }
+
+  &.focused,
+  &:hover {
+    background: var(--gruvbox-highlight);
+    color: var(--gruvbox-bg);
+  }
+}
+
+.binding-mode,
+.tiling-direction {
+  background: var(--gruvbox-bg-soft);
+  color: var(--gruvbox-fg);
+  border-radius: 2px;
+  line-height: 1;
+  padding: 4px 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.binding-mode {
+  margin-right: 4px;
+}
+
+.cpu .high-usage {
+  color: var(--gruvbox-red);
+}
+
+.battery {
+  position: relative;
+  color: var(--gruvbox-fg);
+}
+
+.battery .charging-icon {
+  position: absolute;
+  font-size: 7px;
+  left: -8px;
+  top: 3px;
+}
