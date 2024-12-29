@@ -26,3 +26,24 @@ lspconfig.gopls.setup {
   filetypes = {"go"}
 }
 
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true, -- Enable all features
+      },
+      checkOnSave = {
+        command = "clippy", -- Run clippy on save
+      },
+    },
+  },
+  filetypes = { "rust" }, -- Ensure rust filetype is recognized
+}
+
+lspconfig.zls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"zig"}
+}
