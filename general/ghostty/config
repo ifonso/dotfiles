@@ -1,0 +1,5 @@
+font-family = JetBrainsMono Nerd Font
+theme = GruvboxDark
+window-decoration = false
+background-opacity = 0.90
+initial-command = tmux
