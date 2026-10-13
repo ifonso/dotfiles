@@ -1,5 +1,10 @@
-font-family = JetBrainsMono Nerd Font
-theme = GruvboxDark
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14
+theme = Melange Dark
 window-decoration = false
-background-opacity = 0.90
-initial-command = tmux
+background-opacity = 0.98
+background-blur = true
+
+
+# Inicia (ou reconecta) a sessão tmux "main" ao abrir o Ghostty
+initial-command = tmux new-session -A -s main
