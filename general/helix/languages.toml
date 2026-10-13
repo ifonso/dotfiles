@@ -1,0 +1,28 @@
+[[language]]
+name = "go" 
+auto-format = true
+file-types = ["go"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "java"
+auto-format = true
+file-types = ["java"]
+indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "python"
+roots = ["pyproject.toml", "pyrightconfig.json"]
+language-servers = [ "pyright" ]
+formatter = { command = "black", args = ["-", "-q"] }
+auto-format = true
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
