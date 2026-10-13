@@ -1,24 +1,37 @@
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+vim.g.mapleader = " "
 
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", lazypath
-  })
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
 
--- lazy.vim no runtime como prioridade para plug loading
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local lazy_config = require "configs.lazy"
 
-require("lazy").setup("plugins")
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
 
-require("config.highlights") -- Highlights de tema
-require("config.lsp") -- LSPs config
-require("config.cmp") -- nvim-cmp + luasnip
-require("config.keymaps") -- Keymaps default
-require("config.options") -- Configs padrao
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+require "options"
+require "autocmds"
+
+vim.schedule(function()
+  require "mappings"
+end)
